@@ -1,17 +1,25 @@
 package Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class ItensPlanilha {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
-	private double TempoDescanso;
+	
+	
+	
+	private int TempoDescanso;
 	private int Repeticoes;
 	private int Series;
 	
-	public ItensPlanilha(int id, double tempoDescanso, int repeticoes, int series) {
-		super();
-		Id = id;
-		TempoDescanso = tempoDescanso;
-		Repeticoes = repeticoes;
-		Series = series;
+	public ItensPlanilha() {
 	}
 
 	public int getId() {
@@ -20,14 +28,6 @@ public class ItensPlanilha {
 
 	public void setId(int id) {
 		Id = id;
-	}
-
-	public double getTempoDescanso() {
-		return TempoDescanso;
-	}
-
-	public void setTempoDescanso(double tempoDescanso) {
-		TempoDescanso = tempoDescanso;
 	}
 
 	public int getRepeticoes() {

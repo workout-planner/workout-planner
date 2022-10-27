@@ -2,16 +2,30 @@ package Models;
 
 import java.time.LocalDate;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_pessoa", discriminatorType = DiscriminatorType.STRING)
 public class Pessoa {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
-	private String Nome;
-	private LocalDate AnoNascimento;
 	
-	public Pessoa(int id, String nome, LocalDate anoNascimento, Models.TipoUsuario tipoUsuario) {
-		super();
-		Id = id;
-		Nome = nome;
-		AnoNascimento = anoNascimento;
+	
+	private String Nome;
+	private LocalDate DataNascimento;
+	
+	public Pessoa() {
+		
 	}
 
 	public int getId() {
@@ -30,11 +44,11 @@ public class Pessoa {
 		Nome = nome;
 	}
 
-	public LocalDate getAnoNascimento() {
-		return AnoNascimento;
+	public LocalDate getDataNascimento() {
+		return DataNascimento;
 	}
 
-	public void setAnoNascimento(LocalDate anoNascimento) {
-		AnoNascimento = anoNascimento;
+	public void DataNascimento(LocalDate dataNascimento) {
+		DataNascimento = dataNascimento;
 	}
 }
