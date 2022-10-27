@@ -1,17 +1,29 @@
 package Models;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Exercicio {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
+	
 	private String Nome;
+	
 	private String Desricao;
+	
+	@Enumerated(EnumType.STRING)
 	private TipoExercicio TipoExercicio;
 	
-	public Exercicio(int id, String nome, String desricao, Models.TipoExercicio tipoExercicio) {
-		super();
-		Id = id;
-		Nome = nome;
-		Desricao = desricao;
-		TipoExercicio = tipoExercicio;
+	public Exercicio() {
+		
 	}
 
 	public int getId() {

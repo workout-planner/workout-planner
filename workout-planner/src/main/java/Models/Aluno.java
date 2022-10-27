@@ -2,8 +2,18 @@ package Models;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+
+@Entity
+@DiscriminatorValue("ALUNO")
 public class Aluno extends Pessoa {
 	private String Plano;
+	
+	@Column(length = 10, unique = true)
+	private String matricula;
 	
 	public String getPlano() {
 		return Plano;
@@ -13,8 +23,8 @@ public class Aluno extends Pessoa {
 		Plano = plano;
 	}
 
-	public Aluno(int id, String nome, LocalDate anoNascimento, TipoUsuario tipoUsuario) {
-		super(id, nome, anoNascimento, tipoUsuario);
+	public Aluno() {
+		
 	}
 
 }

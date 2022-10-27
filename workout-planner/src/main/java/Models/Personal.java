@@ -2,13 +2,23 @@ package Models;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+
+@Entity
+@DiscriminatorValue("PERSONAL")
 public class Personal extends Pessoa{
 
-	public Personal(int id, String nome, LocalDate anoNascimento, TipoUsuario tipoUsuario) {
-		super(id, nome, anoNascimento, tipoUsuario);
-		// TODO Auto-generated constructor stub
+	public Personal() {
+		
 	}
+	
+	
+	@Column(length = 10, unique = true)
 	private int CBO;
+	
 	private String Area;
 	public int getCBO() {
 		return CBO;
