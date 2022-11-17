@@ -45,9 +45,9 @@ public class App {
 		
 		Dao<Aluno, Integer> daoAluno = new Dao();
 		Dao<Personal, Integer> daoPersonal = new Dao();
-		Dao<Exercicio, Integer> daoExercicio = new Dao();
+		Dao<Exercicio, Integer> daoExercicio = new Dao<Exercicio, Integer>();
 		Dao<PlanilhaExercicio, Integer> daoPlanilhaExercicio = new Dao();
-		Dao<ItensPlanilha, Integer> daoItensItensPlanilha = new Dao();
+		Dao<ItensPlanilha, Integer> daoItensItensPlanilha = new Dao<ItensPlanilha, Integer>();
 		
 		daoAluno.save(aluno);
 		daoPersonal.save(personal);
