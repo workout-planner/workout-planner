@@ -15,6 +15,14 @@ public class Aluno extends Pessoa {
 	@Column(length = 10, unique = true)
 	private String matricula;
 	
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
 	public String getPlano() {
 		return Plano;
 	}

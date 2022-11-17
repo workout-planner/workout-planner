@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ItensPlanilha {
@@ -13,13 +14,42 @@ public class ItensPlanilha {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
+	@ManyToOne
+	private Exercicio Exercicio;
 	
+	public Exercicio getExercicio() {
+		return Exercicio;
+	}
+
+	public void setExercicio(Exercicio exercicio) {
+		Exercicio = exercicio;
+	}
+
+	public PlanilhaExercicio getPlanilhaExercicio() {
+		return PlanilhaExercicio;
+	}
+
+	public void setPlanilhaExercicio(PlanilhaExercicio planilhaExercicio) {
+		PlanilhaExercicio = planilhaExercicio;
+	}
+
+	@ManyToOne
+	private PlanilhaExercicio PlanilhaExercicio;
 	
 	private int TempoDescanso;
 	private int Repeticoes;
 	private int Series;
 	
 	public ItensPlanilha() {
+		
+	}
+	
+	public int getTempoDescanso() {
+		return TempoDescanso;
+	}
+
+	public void setTempoDescanso(int tempoDescanso) {
+		TempoDescanso = tempoDescanso;
 	}
 
 	public int getId() {

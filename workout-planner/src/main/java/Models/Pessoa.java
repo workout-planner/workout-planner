@@ -48,7 +48,7 @@ public class Pessoa {
 		return DataNascimento;
 	}
 
-	public void DataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		DataNascimento = dataNascimento;
 	}
 }
