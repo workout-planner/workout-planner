@@ -27,8 +27,13 @@ public class ExercicioServelet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Dao.Dao<Exercicio, Integer> daoExercicio = new Dao.Dao<Exercicio, Integer>();
+		
+		int exercicioid = Integer.parseInt(request.getParameter("id"));
+		Exercicio delExercicio = daoExercicio.findById(Exercicio.class, exercicioid).get();
+		
+		daoExercicio.delete(delExercicio);
+		response.sendRedirect(("indexExercicio.jsp"));
 	}
 
 	/**
@@ -36,9 +41,8 @@ public class ExercicioServelet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Dao.Dao<Exercicio, Integer> daoExercicio = new Dao.Dao<Exercicio, Integer>();
-		
 
-		if (request.getParameter("exercicioId") == null)
+		if (request.getParameter("tipoPessoa") == null)
 		{
 			Exercicio exercicio = new Exercicio();
 			exercicio = preencher(request);
