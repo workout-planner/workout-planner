@@ -21,7 +21,7 @@ public class Dao<T, ID> {
 		executeInsideTransaction(em -> em.remove(entity));
 	}
 
-	public Optional<T> findById(Class<T> clazz, Long id) {
+	public Optional<T> findById(Class<T> clazz, ID id) {
 		return Optional.ofNullable(em.find(clazz, id));
 	}
 
