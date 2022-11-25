@@ -7,7 +7,6 @@
 	<persistence-unit name="pu">
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		
 		<properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gymdb?useTimezone=true&amp;serverTimezone=UTC" />
