@@ -20,7 +20,15 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
-	
+	private String Senha;
+	public String getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(String senha) {
+		Senha = senha;
+	}
+
 	private String Nome;
 	private LocalDate DataNascimento;
 	
