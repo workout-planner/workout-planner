@@ -11,7 +11,12 @@ import Models.Personal;
 public class Dao<T, ID> {
 
 	protected EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-
+	
+	public T saveReturnId(T entity) {
+		executeInsideTransaction(em -> em.persist(entity));
+		return entity;
+	}
+	
 	public void save(T entity) {
 		executeInsideTransaction(em -> em.persist(entity));
 	}

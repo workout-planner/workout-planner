@@ -12,8 +12,8 @@
 </head>
 	<body>
 		<%
-			String erro = "";
-			String erroUser = "";
+			String erro = null;
+			String erroUser = null;
 			if (request.getAttribute("message") != null)
 			{
 				erro = request.getAttribute("message").toString();
@@ -108,7 +108,7 @@
 		</div>
 				
 		<script>
-			$(document).ready(function() {  
+			$(document).ready(function() { 
 				if (<%=erro != null%>)
 				{
 					if(<%=erroUser == "personal" %>)

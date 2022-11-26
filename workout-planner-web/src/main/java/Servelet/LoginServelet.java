@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Models.Personal;
 import Models.Pessoa;
 import Models.UsuarioLogado;
+import Repository.AlunoRepository;
 import Repository.PersonalRepository;
 
 /**
@@ -58,13 +59,28 @@ public class LoginServelet extends HttpServlet {
 			else 
 			{
 				UsuarioLogado.setUsuarioLogado(personal);
-				response.sendRedirect(("indexExercicio.jsp"));
+				response.sendRedirect(("TelaInicialPersonal.jsp"));
 			}
 			
 		}
 		else
 		{
-			
+			AlunoRepository alunoRepository = new AlunoRepository();
+			String matricula = request.getParameter("matricula");
+			String senha = request.getParameter("senha");
+			Pessoa aluno = alunoRepository.getForMatricula(matricula, senha);
+			if (aluno == null)
+			{
+				request.setAttribute("message", "Sua matricula ou sua senha estão incorretas");
+				request.setAttribute("erro", "aluno");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/telaLogin.jsp");
+				dispatcher.forward(request, response);
+			}
+			else
+			{
+				UsuarioLogado.setUsuarioLogado(aluno);
+				response.sendRedirect(("indexExercicio.jsp"));
+			}
 		}
 			
 	}
