@@ -6,33 +6,33 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<title>Cadastrar aluno</title>
+<title>Cadastrar Personal</title>
 </head>
 <body>
 <%
-	String erro = null;
-	if (request.getAttribute("message") != null)
-	{
-		erro = request.getAttribute("message").toString();
-	}
-%>
-<form action="UsuarioServelet" method="post" id="formUsuario">
-		<h1> Cadastrar aluno</h1>
+			String erro = null;
+			if (request.getAttribute("message") != null)
+			{
+				erro = request.getAttribute("message").toString();
+			}
+		%>
+<form action="UsuarioServelet" method="post">
+		<h1> Cadastrar Personal</h1>
 		<label>Nome</label>
 		<input type="text" name="nome"/>
-		<label>Matricula</label>
-		<input type="text" name="matricula"/>
+		<label>CBO</label>
+		<input type="text" name="cbo"/>
 		<label>Data Nascimento</label>
        	<input id="date" type="date" name="dataNascimento">
-       	<label>Plano</label>
-       	<input type="text" name="plano"/>
+       	<label>Area</label>
+       	<input type="text" name="area"/>
        	<label>Usuario</label>
-       	<input value="ALUNO" disabled="disabled">
-       	<input id="tipoPessoaUsuario"  type="hidden" name="tipoPessoa" value="ALUNO"/>
+       	<input type="text" value="Personal" disabled="disabled">
+       	<input name="tipoPessoa"  type="hidden" value="PERSONAL"/>
        	<label>Senha</label>
        	<input type="text" name="senha">
 		
-		<input type="submit" id="salvar" value="Salvar"/>
+		<input type="submit" value="Salvar"/>
 </form>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -63,7 +63,7 @@
 		    </div>
 		  </div>
 		</div>
-
+		
 <script>
 $(document).ready(function() { 
 	if (<%=erro != null%>)
