@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ import Models.Personal;
 import Models.Pessoa;
 import Models.PlanilhaExercicio;
 import Repository.AlunoRepository;
+import Repository.ItensPlanilhaRepository;
 import Repository.PersonalRepository;
 
 /**
@@ -40,8 +42,26 @@ public class PlanilhaExercicioServelet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ItensPlanilhaRepository _repositorio = new ItensPlanilhaRepository();
+		Dao<PlanilhaExercicio, Integer> daoPlanilha = new Dao<PlanilhaExercicio,Integer>();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		PlanilhaExercicio planilha = daoPlanilha.findById(PlanilhaExercicio.class, id).get();
+		
+		List<ItensPlanilha> itens = _repositorio.BuscarPorPlanilha(planilha);
+		
+		if (itens == null)
+		{
+			request.setAttribute("error", "Essa planilha não contém exercicios");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/Planilha.jsp");
+			dispatcher.forward(request, response);
+		}
+		else 
+		{
+			request.setAttribute("id", Integer.toString(id));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/ItensPlanilha.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
