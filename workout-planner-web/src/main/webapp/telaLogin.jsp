@@ -14,10 +14,16 @@
 		<%
 			String erro = null;
 			String erroUser = null;
+			String sucesso = null;
 			if (request.getAttribute("message") != null)
 			{
 				erro = request.getAttribute("message").toString();
 				erroUser = request.getAttribute("erro").toString();
+			}
+			
+			if (request.getAttribute("sucesso") != null)
+			{
+				sucesso = request.getAttribute("sucesso").toString();
 			}
 		%>
 		<h1 class="ls-login-logo">Worker Planner gym</h1>
@@ -39,7 +45,7 @@
 					<input name="senha" class="form-control ls-login-bg-password input-lg" id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
 				</div>
 	
-				<input type="submit" value="Salvar"/>
+				<input type="submit" value="ENTRAR"/>
 				<input id="voltar" type="button" value="Voltar" class="btn btn-primary">
 		</form>
 		
@@ -58,7 +64,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <a type="button" class="btn btn-primary">Personal</a>
+		        <a href="cadastrarPersonal.jsp" class="btn btn-primary">Personal</a>
 		        <a href="cadastrarAluno.jsp" class="btn btn-primary  float-right" style="">Aluno</a>
 		      </div>
 		    </div>
@@ -106,6 +112,30 @@
 		    </div>
 		  </div>
 		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modalSucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">SUCESSO</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body .text-danger">
+		       	<label><%= sucesso%></label>
+		      </div>
+		      <div class="modal-footer">
+			      <div class="col-md-12">
+	                <div class="col-md-12">
+	                <button class="btn btn-danger form-control" data-dismiss="modal">OK</button>
+	                </div>
+            	   </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 				
 		<script>
 			$(document).ready(function() { 
@@ -120,6 +150,10 @@
 				}
 				else
 					$("#formLogin").hide();
+				
+				if (<%=sucesso != null%>){
+					$('#modalSucesso').modal('show');
+				}
 			});
 			
 			$( "#loginPersonalbtn" ).click(function() {
