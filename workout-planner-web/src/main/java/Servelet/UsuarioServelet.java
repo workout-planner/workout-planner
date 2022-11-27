@@ -63,7 +63,7 @@ public class UsuarioServelet extends HttpServlet {
 			aluno.setSenha(request.getParameter("senha"));
 			
 			daoAluno.save(aluno);
-			response.sendRedirect(("indexExercicio.jsp"));
+			request.setAttribute("sucesso", "Aluno cadastrado com sucesso");
 		}
 		else {
 			Dao<Personal, Integer> daoPersonal = new Dao<Personal, Integer>();
@@ -86,7 +86,10 @@ public class UsuarioServelet extends HttpServlet {
 			personal.setSenha(request.getParameter("senha"));
 			
 			daoPersonal.save(personal);
-			response.sendRedirect(("indexExercicio.jsp"));
+			request.setAttribute("sucesso", "Personal cadastrado com sucesso");
 		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/telaLogin.jsp");
+		dispatcher.forward(request, response);
 	}
 }

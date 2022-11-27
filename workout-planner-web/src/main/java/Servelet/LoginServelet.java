@@ -79,7 +79,7 @@ public class LoginServelet extends HttpServlet {
 			else
 			{
 				UsuarioLogado.setUsuarioLogado(aluno);
-				response.sendRedirect(("indexExercicio.jsp"));
+				response.sendRedirect(("telaInicialAluno.jsp"));
 			}
 		}
 			
