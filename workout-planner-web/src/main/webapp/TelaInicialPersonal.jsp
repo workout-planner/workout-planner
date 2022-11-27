@@ -10,6 +10,7 @@
 <ul id="nav">
     <li><a href="indexExercicio.jsp">Exercicios</a></li>
     <li><a href="Planilha.jsp">Planilha</a></li>
+    <li><a href="PlanilhasIndex.jsp">Planilha Criadas</a></li>
   </ul>
 </body>
 </html>
