@@ -59,7 +59,7 @@
 			for (Exercicio exercicio : exercicios) {
 			%>
 	            <div class="checklist-nivel-1">
-	                <input onclick="checkClick(<%=exercicio.getId()%>)" name="exercicio" type="checkbox" value="<%=exercicio.getId()%>"/>
+	                <input id="check<%=exercicio.getId()%>" onclick="checkClick(<%=exercicio.getId()%>)" name="exercicio" type="checkbox" value="<%=exercicio.getId()%>"/>
 	                <label><%=exercicio.getNome() %></label>
         	        <label>Repetições</label>
 	                <input name="repeticoes" type="text" id="repeticoes<%=exercicio.getId()%>" disabled="disabled"/>
@@ -83,8 +83,16 @@
 <script>
 	function checkClick(id)
 	{
-		$("#repeticoes"+id).prop("disabled", false);
-		$("#series"+id).prop("disabled", false);
-		$("#descanso"+id).prop("disabled", false);
+		var isChecked = $('#check'+id).is(':checked');
+		if (isChecked) {
+			$("#repeticoes"+id).prop("disabled", false);
+			$("#series"+id).prop("disabled", false);
+			$("#descanso"+id).prop("disabled", false);	
+		}
+		else {
+			$("#repeticoes"+id).prop("disabled", true);
+			$("#series"+id).prop("disabled", true);
+			$("#descanso"+id).prop("disabled", true);
+		}
 	}
 </script>
