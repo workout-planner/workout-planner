@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Models.Exercicio;
 import Models.TipoExercicio;
+import Models.UsuarioLogado;
 
 
 @WebServlet({ "/ExercicioServelet", "/controllerServelet" })
@@ -28,7 +29,7 @@ public class ExercicioServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Dao.Dao<Exercicio, Integer> daoExercicio = new Dao.Dao<Exercicio, Integer>();
-		
+		UsuarioLogado.getUsuarioLogado();
 		int exercicioid = Integer.parseInt(request.getParameter("id"));
 		Exercicio delExercicio = daoExercicio.findById(Exercicio.class, exercicioid).get();
 		

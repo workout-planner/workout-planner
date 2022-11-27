@@ -5,10 +5,18 @@ import java.util.function.Consumer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
+import Models.Personal;
 public class Dao<T, ID> {
 
-	private EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-
+	protected EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+	
+	public T saveReturnId(T entity) {
+		executeInsideTransaction(em -> em.persist(entity));
+		return entity;
+	}
+	
 	public void save(T entity) {
 		executeInsideTransaction(em -> em.persist(entity));
 	}
@@ -40,5 +48,4 @@ public class Dao<T, ID> {
 			throw e;
 		}
 	}
-
 }
