@@ -16,24 +16,37 @@
 				erro = request.getAttribute("message").toString();
 			}
 		%>
-<form action="UsuarioServelet" method="post">
-		<h1> Cadastrar Personal</h1>
-		<label>Nome</label>
-		<input type="text" name="nome"/>
-		<label>CBO</label>
-		<input type="text" name="cbo"/>
-		<label>Data Nascimento</label>
-       	<input id="date" type="date" name="dataNascimento">
-       	<label>Area</label>
-       	<input type="text" name="area"/>
-       	<label>Usuario</label>
-       	<input type="text" value="Personal" disabled="disabled">
-       	<input name="tipoPessoa"  type="hidden" value="PERSONAL"/>
-       	<label>Senha</label>
-       	<input type="text" name="senha">
-		
-		<input type="submit" value="Salvar"/>
-</form>
+	<div class="h-100 d-flex align-items-center justify-content-center">
+		<form class="col-md-4 col-md-offset-4" action="UsuarioServelet" method="post">
+			<h1 class="text-center"> Cadastrar Personal</h1>
+			<div class="form-outline mb-4">
+				<label class="form-label">Nome</label>
+				<input class="form-control" type="text" name="nome"/>
+			</div>
+			<div class="form-outline mb-4">
+				<label class="form-label">CBO</label>
+				<input class="form-control" type="text" name="cbo"/>
+			</div>
+			<div class="form-outline mb-4">
+				<label class="form-label">Data Nascimento</label>
+		       	<input class="form-control" id="date" type="date" name="dataNascimento">
+	       	</div>
+	       	<div class="form-outline mb-4">
+		       	<label class="form-label">Area</label>
+		       	<input class="form-control" type="text" name="area"/>
+	       	</div>
+	       	<div class="form-outline mb-4">
+		       	<label class="form-label">Usuario</label>
+		       	<input class="form-control" type="text" value="Personal" disabled="disabled">
+	       	</div>
+	       	<input name="tipoPessoa"  type="hidden" value="PERSONAL"/>
+	       	<div class="form-outline mb-4">
+		       	<label class="form-label">Senha</label>
+		       	<input class="form-control" type="text" name="senha">
+			</div>
+			<button class="btn btn-primary btn-block w-100" type="submit">Salvar</button>
+		</form>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

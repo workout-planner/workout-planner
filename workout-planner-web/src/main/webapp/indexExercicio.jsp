@@ -21,33 +21,36 @@
 
 <a class="btn btn-primary" href="cadastrarExercicio.jsp">Cadastrar</a>
 <div class="container">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NOME</th>
-				<th>DESCRIÇÃO</th>
-				<th>TIPO EXERCICIO</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		<% 
-		for (Exercicio exercicio : exercicios) {
-		%>
-			<tr>
-				<td><%= exercicio.getId() %></td>
-				<td><%= exercicio.getNome() %></td>
-				<td><%= exercicio.getDesricao() %></td>
-				<td><%= exercicio.getTipoExercicio() %></td>
-				<td><a href="editarExercicio.jsp?id=<%=exercicio.getId()%>"><i class="">Edit</i></a></td>
-				<td><a href="<%= request.getContextPath()%>/ExercicioServelet?id=<%=exercicio.getId()%>">Delete</a></td>
-			</tr>
-		<% 
-		}
-		%>
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-sm table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOME</th>
+					<th>DESCRIÇÃO</th>
+					<th>TIPO EXERCICIO</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<% 
+			for (Exercicio exercicio : exercicios) {
+			%>
+				<tr>
+					<td><%= exercicio.getId() %></td>
+					<td><%= exercicio.getNome() %></td>
+					<td><%= exercicio.getDesricao() %></td>
+					<td><%= exercicio.getTipoExercicio() %></td>
+					<td><a href="editarExercicio.jsp?id=<%=exercicio.getId()%>"><i class="">Edit</i></a></td>
+					<td><a href="<%= request.getContextPath()%>/ExercicioServelet?id=<%=exercicio.getId()%>">Delete</a></td>
+				</tr>
+			<% 
+			}
+			%>
+			</tbody>
+		</table>
+	</div>
 </div>
 </body>
 </html>
