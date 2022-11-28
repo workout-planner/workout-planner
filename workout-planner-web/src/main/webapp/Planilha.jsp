@@ -58,47 +58,53 @@
 			<div class="border p-4 mb-4">
 				<div class="form-outline mb-4">
 					<select class="form-select" name="tipoExercicio" id="tipoExercicio">
+					<option value="Nenhum">Nenhum</option>
 					<%
 					    for (TipoExercicio exercicio : TipoExercicio.values()) {
 					%>
+						
 					  <option value="<%= exercicio %>"><%=exercicio%></option>
 					<%
 					    }
 					%>
 					</select>
 				</div>
+				<div id="divFiltro">
 				<% 
 				for (Exercicio exercicio : exercicios) {
 				%>
-		            <div class="checklist-nivel-1">
-		                <div class="form-check form-outline mb-4">
-			                <input class="form-check-input" id="check<%=exercicio.getId()%>" onclick="checkClick(<%=exercicio.getId()%>)" name="exercicio" type="checkbox" value="<%=exercicio.getId()%>"/>
-			            	<label class="form-check-label"><%=exercicio.getNome() %></label>
-		        	    </div>   
-		        	    <div class="row"> 
-		        	    	<div class="col">
-				                <div class="form-outline mb-4">
-				        	        <label class="form-label">Repetições</label>
-					                <input class="form-control" name="repeticoes" type="text" id="repeticoes<%=exercicio.getId()%>" disabled="disabled"/>
-				                </div>
+					<div id="<%=exercicio.getTipoExercicio()%>">
+			            <div class="checklist-nivel-1">
+			                <div class="form-check form-outline mb-4">
+				                <input class="form-check-input" id="check<%=exercicio.getId()%>" onclick="checkClick(<%=exercicio.getId()%>)" name="exercicio" type="checkbox" value="<%=exercicio.getId()%>"/>
+				            	<label class="form-check-label"><%=exercicio.getNome() %></label>
+			        	    </div>   
+			        	    <div class="row"> 
+			        	    	<div class="col">
+					                <div class="form-outline mb-4">
+					        	        <label class="form-label">Repetições</label>
+						                <input class="form-control" name="repeticoes" type="text" id="repeticoes<%=exercicio.getId()%>" disabled="disabled"/>
+					                </div>
+					            </div>
+					            <div class="col">
+					                <div class="form-outline mb-4">
+						                <label class="form-label">Series</label>
+						                <input class="form-control" name="series" type="text" id="series<%=exercicio.getId()%>" disabled="disabled"/>
+					                </div>
+					            </div>
+					            <div class="col">
+					                <div class="form-outline mb-4">
+						                <label class="form-label">Tempo Descanso</label>
+						                <input class="form-control" name="tempoDescanso" id="descanso<%=exercicio.getId()%>" type="text" disabled="disabled"/>
+					            	</div>
+					           	</div>
 				            </div>
-				            <div class="col">
-				                <div class="form-outline mb-4">
-					                <label class="form-label">Series</label>
-					                <input class="form-control" name="series" type="text" id="series<%=exercicio.getId()%>" disabled="disabled"/>
-				                </div>
-				            </div>
-				            <div class="col">
-				                <div class="form-outline mb-4">
-					                <label class="form-label">Tempo Descanso</label>
-					                <input class="form-control" name="tempoDescanso" id="descanso<%=exercicio.getId()%>" type="text" disabled="disabled"/>
-				            	</div>
-				           	</div>
 			            </div>
 		            </div>
 				<% 
 				}
 				%>
+				</div>
 			</div>
 			<button class="btn btn-primary btn-block w-100" type="submit" >Salvar</button>
 		</form>
@@ -110,6 +116,17 @@
 </html>
 
 <script>
+	$('#tipoExercicio').on('change', function () {
+	   	var tipoExercicio = '#'+$("#tipoExercicio").val();
+	   	$("#divFiltro").children('div').hide();
+	   	$("#divFiltro").children(tipoExercicio).show();
+	   	
+	   	if(tipoExercicio == '#Nenhum')
+   		{
+	   		$("#divFiltro").children('div').show();
+   		}
+	});
+
 	function checkClick(id)
 	{
 		var isChecked = $('#check'+id).is(':checked');
