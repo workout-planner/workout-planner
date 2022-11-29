@@ -43,7 +43,7 @@ public class ExercicioServelet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Dao.Dao<Exercicio, Integer> daoExercicio = new Dao.Dao<Exercicio, Integer>();
 
-		if (request.getParameter("tipoPessoa") == null)
+		if (request.getParameter("exercicioId") == null)
 		{
 			Exercicio exercicio = new Exercicio();
 			exercicio = preencher(request);
