@@ -31,6 +31,10 @@
 		<form class="col-md-4 col-md-offset-4" action="PlanilhaExercicioServelet" method="post">
 			<h1 class="text-center"> Cadastrar Planilha </h1>
 			<div class="form-outline mb-4">
+				<label class="form-label">Nome</label>
+				<input class="form-control" id="text" type="text" name="nome">
+			</div>
+			<div class="form-outline mb-4">
 				<label class="form-label">Data Inicio</label>
 				<input class="form-control" id="date" type="date" name="dataInicio">
 			</div>
@@ -139,6 +143,9 @@
 			$("#repeticoes"+id).prop("disabled", true);
 			$("#series"+id).prop("disabled", true);
 			$("#descanso"+id).prop("disabled", true);
+			$("#repeticoes"+id).val("");
+			$("#series"+id).val("");
+			$("#descanso"+id).val("");
 		}
 	}
 </script>
