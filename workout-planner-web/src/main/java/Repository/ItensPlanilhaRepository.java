@@ -2,7 +2,6 @@ package Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.TypedQuery;
 
 import Dao.Dao;
@@ -24,4 +23,18 @@ public class ItensPlanilhaRepository extends Dao<ItensPlanilha, Integer>{
 		
 		return itensPlanilha;
 	}
+	
+//	@Transactional
+//	public void DeleteItensPorPlanilha(PlanilhaExercicio planilha)
+//	{
+//		try {
+//			//Query query = em.createQuery("DELETE FROM ItensPlanilha c WHERE c.PlanilhaExercicio = ?1");
+//			Query query = em.createQuery("DELETE FROM ItensPlanilha c WHERE c.PlanilhaExercicio = ?1");
+//			query.setParameter(1, planilha);
+//			em.joinTransaction();
+//			query.executeUpdate();
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//	}
 }

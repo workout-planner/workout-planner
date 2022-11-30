@@ -1,5 +1,7 @@
 package Repository;
 
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 
 import Dao.Dao;
@@ -48,5 +50,18 @@ public class AlunoRepository extends Dao<Pessoa, Integer>{
 		}
 		
 		return aluno;
+	}
+	
+	public List<Pessoa> buscarAll() {
+		List<Pessoa> list;
+		try {
+			TypedQuery<Pessoa> query = em.createQuery("SELECT e FROM Pessoa e WHERE e.matricula != null", Pessoa.class);
+			
+			list = query.getResultList();
+		} catch (Exception e) {
+			list = null;
+		}
+		
+		return list;
 	}
 }

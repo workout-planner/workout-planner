@@ -16,7 +16,7 @@
 	Exercicio exercicio = daoExercicio.findById(Exercicio.class, exercicioId).get();
 %>
 	<div class="h-100 d-flex align-items-center justify-content-center">
-		<form class="col-md-4 col-md-offset-4" action="controllerServeleto" method="post">
+		<form class="col-md-4 col-md-offset-4" action="ExercicioServelet" method="post">
 			<h1 class="text-center"> Editar Curso</h1>
 			<input type="hidden" name="exercicioId" value="<%= exercicioId %>">
 			<div class="form-outline mb-4">
