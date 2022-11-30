@@ -24,6 +24,7 @@
 	
 	List<ItensPlanilha> itens = _repositorio.BuscarPorPlanilha(planilha);
 %>
+<h1 class="text-center"><%=planilha.getNomeTabela() %></h1>
 <div class="container">
 	<ul class="list-inline row">
 	  <li class="col-sm-4 text-center">Data Inicio : <%=planilha.getDataInicio() %></li>
@@ -40,6 +41,7 @@
 						<th>REPETIÇÕES</th>
 						<th>TEMPO DESCANSO</th>
 						<th>TIPO EXERCICIO</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,6 +56,11 @@
 							<td data-align="center"><%= item.getRepeticoes() %></td>
 							<td data-align="center"><%= item.getTempoDescanso() %> segundos</td>
 							<td data-align="center"><%= item.getExercicio().getTipoExercicio() %></td>
+							<td>
+								<div class="form-check form-switch">
+								  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+								</div> 
+							</td>
 						</tr>
 					<% 
 					}
