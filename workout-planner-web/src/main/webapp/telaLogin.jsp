@@ -5,12 +5,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <!-- CSS only -->
+<style>
+	html {
+		height: 100%;
+	}
+</style>
 <title>Worker Planner gym</title>
 </head>
-	<body>
+	<body class="h-100">
 		<%
 			String erro = null;
 			String erroUser = null;
@@ -26,28 +31,36 @@
 				sucesso = request.getAttribute("sucesso").toString();
 			}
 		%>
-		<h1 class="ls-login-logo">Worker Planner gym</h1>
-		<button id="loginBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Tenho uma conta</button>
-		<button id="cadastrar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</button>
-		<form action="LoginServelet" method="post" id="formLogin">
-				<div class="form-group ls-login-user" id="loginMatricula">
-					<label for="userLogin">Matricula</label>
-					<input name="matricula" class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
+		
+			<div class="row h-100 d-flex align-items-center justify-content-center">
+				<div class="col-md-7 border rounded" style="padding: 5rem; background-color: #e9e8ed">
+					<h1 class="h3 mb-3 fw-normal text-center">Workout Planner gym</h1>
+					<div class="text-center">
+						<img class="mb-4" src="images/hand.png" alt="" width="80" height="80">	
+					</div>
+					<button id="loginBtn" type="button" class="btn btn-primary w-100 mb-3" data-toggle="modal" data-target="#loginModal">Tenho uma conta</button>
+					<button id="cadastrar" type="button" class="btn btn-secondary w-100 mb-3" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</button>
+					<form class="card-body cardbody-color p-lg-5" action="LoginServelet" method="post" id="formLogin">
+						<div class="form-floating" id="loginMatricula">
+							<label for="userLogin">Matricula</label>
+							<input name="matricula" class="form-control mb-3" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
+						</div>
+						
+						<div class="form-floating mb-3" id="loginPersonal">
+							<label for="userLogin">CBO</label>
+							<input name="cbo" class="form-control mb-3" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
+						</div>
+			
+						<div class="form-floating mb-3">
+							<label>Senha</label>
+							<input name="senha" class="form-control mb-3" id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
+						</div>
+			
+						<button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Entrar</button>
+						<input id="voltar" type="button" value="Voltar" class="btn btn-secondary">
+					</form>
 				</div>
-				
-				<div class="form-group ls-login-user" id="loginPersonal">
-					<label for="userLogin">CBO</label>
-					<input name="cbo" class="form-control ls-login-bg-user input-lg" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
-				</div>
-	
-				<div class="form-group ls-login-password">
-					<label>Senha</label>
-					<input name="senha" class="form-control ls-login-bg-password input-lg" id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
-				</div>
-	
-				<input type="submit" value="ENTRAR"/>
-				<input id="voltar" type="button" value="Voltar" class="btn btn-primary">
-		</form>
+			</div>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -59,13 +72,11 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h5 class="modal-title" id="exampleModalLabel">Cadastrar</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        <a href="cadastrarPersonal.jsp" class="btn btn-primary">Personal</a>
-		        <a href="cadastrarAluno.jsp" class="btn btn-primary  float-right" style="">Aluno</a>
+		        <a href="cadastrarAluno.jsp" class="btn btn-primary float-end" style="">Aluno</a>
 		      </div>
 		    </div>
 		  </div>
@@ -77,13 +88,11 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h5 class="modal-title" id="exampleModalLabel">Tipo de usuario</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        <a class="btn btn-primary" id="loginPersonalbtn" data-dismiss="modal">Personal</a>
-		        <a class="btn btn-primary  float-right" id="loginAlunobtn" data-dismiss="modal">Aluno</a>
+		        <a class="btn btn-primary float-end" id="loginAlunobtn" data-dismiss="modal">Aluno</a>
 		      </div>
 		    </div>
 		  </div>
@@ -95,9 +104,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h5 class="modal-title">ERRO</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body .text-danger">
 		       	<label><%=erro %></label>
@@ -119,9 +126,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h5 class="modal-title">SUCESSO</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body .text-danger">
 		       	<label><%= sucesso%></label>
@@ -129,9 +134,9 @@
 		      <div class="modal-footer">
 			      <div class="col-md-12">
 	                <div class="col-md-12">
-	                <button class="btn btn-danger form-control" data-dismiss="modal">OK</button>
+	                	<button class="btn btn-danger form-control" data-dismiss="modal">OK</button>
 	                </div>
-            	   </div>
+            	  </div>
 		      </div>
 		    </div>
 		  </div>
