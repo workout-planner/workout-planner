@@ -20,7 +20,15 @@ public class PlanilhaExercicio {
 	private LocalDate DataInicio;
 	
 	private LocalDate DataFim;
-	
+	private String NomeTabela;
+	public String getNomeTabela() {
+		return NomeTabela;
+	}
+
+	public void setNomeTabela(String nomeTabela) {
+		NomeTabela = nomeTabela;
+	}
+
 	@ManyToOne
 	private Aluno Aluno;
 
