@@ -41,18 +41,20 @@
 					<button id="loginBtn" type="button" class="btn btn-primary w-100 mb-3" data-toggle="modal" data-target="#loginModal">Tenho uma conta</button>
 					<button id="cadastrar" type="button" class="btn btn-secondary w-100 mb-3" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</button>
 					<form class="card-body cardbody-color p-lg-5" action="LoginServelet" method="post" id="formLogin">
+					<div id="loginMatricula">
+					<label for="userLogin">Matricula</label>	
 						<div class="form-floating" id="loginMatricula">
-							<label for="userLogin">Matricula</label>
 							<input name="matricula" class="form-control mb-3" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
 						</div>
-						
+					</div>
+					<div id="loginPersonal">
+						<label for="userLogin">CBO</label>
 						<div class="form-floating mb-3" id="loginPersonal">
-							<label for="userLogin">CBO</label>
 							<input name="cbo" class="form-control mb-3" id="userLogin" type="text" aria-label="Usuário" placeholder="Usuário">
 						</div>
-			
+					</div>
+						<label>Senha</label>
 						<div class="form-floating mb-3">
-							<label>Senha</label>
 							<input name="senha" class="form-control mb-3" id="userPassword" type="password" aria-label="Senha" placeholder="Senha">
 						</div>
 			
@@ -75,9 +77,9 @@
 		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        <a href="cadastrarPersonal.jsp" class="btn btn-primary">Personal</a>
+		      	<a class="btn btn-primary" data-toggle="modal" data-target="#modalSenha">Personal</a>
 		        <a href="cadastrarAluno.jsp" class="btn btn-primary float-end" style="">Aluno</a>
-		      </div>
+	          </div>
 		    </div>
 		  </div>
 		</div>
@@ -87,7 +89,7 @@
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Tipo de usuario</h5>
+		        <h5 class="modal-title text-center" id="exampleModalLabel">Tipo de usuario</h5>
 		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
@@ -141,6 +143,45 @@
 		    </div>
 		  </div>
 		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modalSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Insira a senha para cadastrar um personal</h5>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <input type="password"id="senhaPersonal">
+		      <div class="modal-footer">
+			      <div class="col-md-12">
+	                <div class="col-md-12">
+	                	<button id="buttonSenha"class="btn btn-danger form-control" data-dismiss="modal">OK</button>
+	                </div>
+            	  </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modalSenhaErro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Senha incorreta</h5>
+		        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-footer">
+			      <div class="col-md-12">
+	                <div class="col-md-12">
+	                	<button class="btn btn-danger form-control" data-dismiss="modal">OK</button>
+	                </div>
+            	  </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 				
 		<script>
 			$(document).ready(function() { 
@@ -165,6 +206,10 @@
 				loginPersonal();
 			});
 			
+			$( "#PersonalCadastrarModal" ).click(function() {
+				loginPersonal();
+			});
+			
 			$( "#loginAlunobtn" ).click(function() {
 				loginAluno();
 			});
@@ -174,6 +219,22 @@
 				$('#cadastrar').show();
 				$('#login').show();
 				$('#loginBtn').show();
+			});
+			
+			$( "#buttonSenha" ).click(function() {
+				var senha = $("#senhaPersonal").val();
+				if (senha == "1234")
+				{
+					window.location.assign("http://localhost:8080/workout-planner-web/cadastrarPersonal.jsp");
+					$("#senhaPersonal").val("");
+				}
+				else
+				{
+					$('#modalSenhaErro').modal('show');
+					$("#senhaPersonal").val("");
+				}
+					
+					
 			});
 			
 			function loginPersonal()

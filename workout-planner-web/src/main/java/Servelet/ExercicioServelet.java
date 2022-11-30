@@ -1,6 +1,8 @@
 package Servelet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +35,14 @@ public class ExercicioServelet extends HttpServlet {
 		int exercicioid = Integer.parseInt(request.getParameter("id"));
 		Exercicio delExercicio = daoExercicio.findById(Exercicio.class, exercicioid).get();
 		
-		daoExercicio.delete(delExercicio);
-		response.sendRedirect(("indexExercicio.jsp"));
+		try {
+			daoExercicio.delete(delExercicio);
+			response.sendRedirect(("indexExercicio.jsp"));
+		} catch (Exception e) {
+			request.setAttribute("error", "Esse exercicio está relacionado a algumas planilhas.");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("indexExercicio.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

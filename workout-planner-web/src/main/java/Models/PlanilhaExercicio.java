@@ -16,7 +16,15 @@ public class PlanilhaExercicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
-	
+	private String NomeTabela;
+	public String getNomeTabela() {
+		return NomeTabela;
+	}
+
+	public void setNomeTabela(String nomeTabela) {
+		NomeTabela = nomeTabela;
+	}
+
 	private LocalDate DataInicio;
 	
 	private LocalDate DataFim;
