@@ -46,7 +46,7 @@ public class UsuarioServelet extends HttpServlet {
 		Aluno aluno = (Aluno) pessoa;
 		List<PlanilhaExercicio> plan = planilha.buscarPlanilhasUsuario(aluno);
 		
-		if (plan != null)
+		if (!plan.isEmpty())
 		{
 			request.setAttribute("error", "Esse aluno possui planilhas relacionadas a ele.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("IndexUsuarios.jsp");
