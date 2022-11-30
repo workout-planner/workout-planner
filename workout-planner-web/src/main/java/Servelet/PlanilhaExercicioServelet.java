@@ -86,6 +86,7 @@ public class PlanilhaExercicioServelet extends HttpServlet {
 		Personal personal = (Personal) usuarioPersonal;
 		
 		planilhaExercicio.setAluno(aluno);
+		planilhaExercicio.setNomeTabela(request.getParameter("nome"));
 		planilhaExercicio.setDataInicio(LocalDate.parse(request.getParameter("dataInicio")));
 		planilhaExercicio.setDataFim(LocalDate.parse(request.getParameter("dataFim")));
 		planilhaExercicio.setPersonal(personal);
